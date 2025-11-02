@@ -21,6 +21,7 @@ Make sure you have:
 ---
 
 ## ⚙️ 1. Mount Drive and set up Git
+```python
 from google.colab import drive
 drive.mount('/content/drive')
 
