@@ -58,11 +58,11 @@ It does all three tasks:
 ## 🚀 4. How to Run
 In Colab:
 
-python
-Copy code
+```python
 %cd /content/drive/MyDrive/assignment_folder
 !pip install -r requirements.txt
 !python reddit_code.py
+```
 
 You’ll see output like:
 ⬇️  r/education: collecting HOT (limit=50) ...
