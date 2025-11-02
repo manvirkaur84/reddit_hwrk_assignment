@@ -21,13 +21,13 @@ Make sure you have:
 ---
 
 ## ⚙️ 1. Mount Drive and set up Git
-```python```
+```python
 from google.colab import drive
 drive.mount('/content/drive')
 
 %cd /content/drive/MyDrive/assignment_folder
 !git config --global user.name "Manvir Kaur"
-!git config --global user.email "manvir99@icloud.com"
+!git config --global user.email "manvir99@icloud.com"```
 
 ## 2. Create requirements.txt
 praw
