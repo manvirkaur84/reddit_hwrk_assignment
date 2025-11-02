@@ -119,6 +119,3 @@ if __name__ == "__main__":
 
     # Task 3: export everything to CSV
     export_posts_to_csv(all_posts, out_path="/content/drive/MyDrive/assignment_folder/reddit_data.csv")
-
-    print("🎉 Done.")
-
