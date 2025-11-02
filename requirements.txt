@@ -1,0 +1,5 @@
+
+praw
+pandas
+requests
+python-dotenv
