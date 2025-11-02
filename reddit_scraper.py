@@ -76,6 +76,7 @@ def _row_from_post(post, subreddit_name: str, search_query: str | None) -> Dict[
         "search_query": search_query if search_query else None,
     }
 
+#Task 1: Fetching "Hot" Posts
 def fetch_hot_posts(subs, limit=50) -> List[Dict[str, Any]]:
     rows: List[Dict[str, Any]] = []
     for sub in subs:
@@ -84,6 +85,16 @@ def fetch_hot_posts(subs, limit=50) -> List[Dict[str, Any]]:
             rows.append(_row_from_post(post, sub, search_query=None))
     return rows
 
+#Task 2: Keyword-Based Search
+def search_posts(query: str, subs: List[str], limit=50) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    for sub in subs:
+        print(f"🔎  r/{sub}: searching '{query}' (limit={limit}) ...")
+        for post in reddit.subreddit(sub).search(query=query, sort="new", limit=limit):
+            rows.append(_row_from_post(post, sub, search_query=query))
+    return rows
+
+#Task 3: Data Export to CSV
 def export_posts_to_csv(rows, out_path="reddit_data.csv"):
     if not rows:
         print("⚠️ No rows to export.")
@@ -96,6 +107,18 @@ def export_posts_to_csv(rows, out_path="reddit_data.csv"):
 
 if __name__ == "__main__":
     SUBS = ["education", "teachers", "college"]
-    posts = fetch_hot_posts(SUBS, limit=50)
-    export_posts_to_csv(posts, out_path="/content/drive/MyDrive/assignment_folder/reddit_data.csv")
+
+    # Task 1: hot posts
+    hot_posts = fetch_hot_posts(SUBS, limit=50)
+
+    # Task 2: keyword search posts (example keyword: "homework")
+    search_posts_rows = search_posts(query="homework", subs=SUBS, limit=25)
+
+    # combine both sources of data
+    all_posts = hot_posts + search_posts_rows
+
+    # Task 3: export everything to CSV
+    export_posts_to_csv(all_posts, out_path="/content/drive/MyDrive/assignment_folder/reddit_data.csv")
+
     print("🎉 Done.")
+
