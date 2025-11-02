@@ -3,7 +3,8 @@
 
 ## 📝 Assignment Overview  
 This project connects to the Reddit API using PRAW to collect, clean, and export social media posts from subreddits related to **education**, **autism**, and **teachers**.  
-It’s designed to simulate a real-world data pipeline — where we securely load Reddit API credentials, fetch “hot” and keyword-based posts, clean them, and save everything into a structured CSV file for later analysis.  
+It’s designed to simulate a real-world data pipeline — where we securely load Reddit API credentials, fetch “hot” and search keyword-based posts, clean them, 
+and save everything into a structured CSV file for later analysis.  
 
 ---
 
@@ -19,81 +20,52 @@ Make sure you have:
 
 ---
 
-## 📦 1. Install Requirements  
-Run this first in Google Colab:  
-```python !pip install -r requirements.txt```
-
-This installs all the required libraries listed in requirements.txt:
-
-praw → connects to Reddit’s API
-pandas → data cleaning and CSV export
-python-dotenv → loads credentials securely from an env file
-requests → handles Reddit’s API calls internally
-
-Note: You won’t see google.colab listed in requirements.txt.
-That’s because Colab already includes it by default, so there’s no need to install it with pip.
-You can still import it in the notebook (from google.colab import drive) and it will work. It just doesn’t need to be installed like a normal package.
-
----
-
-## 🔐 2. Create Your reddit_api.env File
-
-We don’t hard-code secrets directly into the notebook.
-Instead, we create a small env file that stores Reddit API credentials.
-
-In a new Colab cell, run this command (and replace the placeholders with your info):
-
-%%writefile /content/drive/MyDrive/assignment_folder/reddit_api.env
-REDDIT_CLIENT_ID=your_client_id_here
-REDDIT_CLIENT_SECRET=your_client_secret_here
-REDDIT_USER_AGENT=your_user_agent_here
-
-
-What’s inside:
-REDDIT_CLIENT_ID → from your Reddit developer app
-REDDIT_CLIENT_SECRET → secret key from Reddit
-REDDIT_USER_AGENT → short name for your app, like: MyRedditApp/1.0 by u/yourUsername
-
-This file should live in the same folder where you’re running the notebook so the code can read it.
-
----
-
-### 💾 3. Mount Google Drive
-
-Your reddit_api.env file and your final CSV both live in your Google Drive folder.
-Run this cell at the top of the notebook:
-
+## ⚙️ 1. Mount Drive and set up Git
+```python
 from google.colab import drive
 drive.mount('/content/drive')
 
-Approve access. This lets the notebook read reddit_api.env and later write reddit_data.csv to Drive.
-
----
-
-## 🚀 4. Execution
-
-Now you’re ready to run the notebook: ManvirKaur_reddit_code.ipynb
-
-Make sure you’re in the correct folder:
-
 %cd /content/drive/MyDrive/assignment_folder
+!git config --global user.name "Manvir Kaur"
+!git config --global user.email "manvir99@icloud.com"```
 
-Run all cells in order.
+## 2. Create requirements.txt
+praw
+pandas
+requests
+python-dotenv
+(Colab already has google.colab, so you don’t need to install it.)
 
-The notebook will:
-* Load Reddit credentials from reddit_api.env
-* Connect to the Reddit API
-* Pull “hot” posts from three subreddits:
-    * education
-    * autism
-    * teachers
-* Search posts by keyword (for example, “support”)
-* Clean and deduplicate results
-* Export everything to a CSV file called reddit_data.csv
-* While it runs, you’ll see messages like:
-    * Collected 50 posts from r/education
-    * Done search for 'support' in r/autism
-    * Saved 150 rows to reddit_data.csv
+## 3. Create reddit_api.env
+Store your Reddit credentials in:
+/content/drive/MyDrive/assignment_folder/reddit_api.env
+
+Example:
+REDDIT_CLIENT_ID=your_client_id
+REDDIT_CLIENT_SECRET=your_client_secret
+REDDIT_USER_AGENT=your_user_agent
+
+## 3. Script
+The main file is reddit_code.py.
+It does all three tasks:
+  * Fetches “hot” posts from 3 subreddits (education, teachers, autism)
+  * Searches posts by keyword (ex: "behaviors")
+  * Cleans, deduplicates, and exports to reddit_data.csv
+
+## 🚀 4. How to Run
+In Colab:
+
+python
+Copy code
+%cd /content/drive/MyDrive/assignment_folder
+!pip install -r requirements.txt
+!python reddit_code.py
+
+You’ll see output like:
+⬇️  r/education: collecting HOT (limit=50) ...
+🔎  r/teachers: searching 'homework' (limit=25) ...
+📁 Saved 150 rows to reddit_data.csv
+🎉 Done.
 
 ---
 
