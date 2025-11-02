@@ -6,18 +6,29 @@ import pandas as pd
 import praw
 from dotenv import load_dotenv
 
-# load secrets from reddit.env
-load_dotenv("/content/drive/MyDrive/assignment_folder/reddit_api.env")
+# Define the path to your .env file in Google Drive
+# IMPORTANT: Update this path to the actual location of your reddit_api.env file in your Google Drive
+env_file_path = '/content/drive/MyDrive/assignment_folder/reddit_api.env'
 
-client_id = os.getenv("REDDIT_CLIENT_ID")
-client_secret = os.getenv("REDDIT_CLIENT_SECRET")
-user_agent = os.getenv("REDDIT_USER_AGENT")
+# Load environment variables from reddit_api.env file if it exists
+if os.path.exists(env_file_path):
+    config = dotenv_values(env_file_path)
+    print(f"✅ Environment variables loaded from {env_file_path}!")
+else:
+    config = {}
+    print(f"❌ Error: '{env_file_path}' not found. Environment variables not loaded.")
+    print("Please ensure the 'reddit_api.env' file is in the specified Google Drive path.")
 
+# Authenticate with Reddit using environment variables
 reddit = praw.Reddit(
-    client_id=client_id,
-    client_secret=client_secret,
-    user_agent=user_agent,
+  client_id="cK1a0rTKjVUp7RSVKyX9Ug",
+  client_secret="MvS-_Ms9GN2TIheI8i6VFafDIlO88A",
+  user_agent="My Test App v1.0 by u/Fit-Offer-8414" # A unique description
 )
+
+print("✅ Reddit API authenticated successfully!")
+print(f"Connected as: {reddit.user.me()}")
+
 
 FIELDNAMES = [
     "title",
