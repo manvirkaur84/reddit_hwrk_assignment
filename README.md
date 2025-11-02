@@ -104,22 +104,22 @@ This file contains all collected and cleaned Reddit posts.
 
 Below is a description of each column included in the CSV:
 
-| Column | Description | Example | Data Type |
-|---------|-------------|----------|------------|
-| `title` | The full title of the post. | "AI in classrooms" | String |
-| `score` | The net score (upvotes - downvotes). | 245 | Integer |
-| `upvote_ratio` | Ratio of upvotes to total votes (proxy for quality / approval). | 0.95 | Float |
-| `num_comments` | Total number of comments. | 42 | Integer |
-| `author` | Username of the post’s author. If deleted, may be `None`. | "u/data_nerd" | String |
-| `subreddit` | Subreddit where the post came from. | "r/teachers" | String |
-| `url` | External link URL (if it’s a link post). | "https://nytimes.com/..." | String |
-| `permalink` | Permanent Reddit link to the post itself. | "/r/autism/comments/abc123/..." | String |
-| `created_utc` | Unix timestamp of when the post was created (UTC). | 1730432103 | Integer / String |
-| `is_self` | `True` if text-only/self post, `False` if it links out. | True | Boolean |
-| `selftext` | The body text of the post (truncated to 500 characters so rows don’t explode). | "Here's how teachers handle..." | String |
-| `flair` | Flair / tag / category label on the post. | "Discussion" | String |
-| `domain` | Domain of the linked content. | "reddit.com" | String |
-| `search_query` | The keyword used to find this post during search. (For “hot” posts this may be blank or `None`.) | "support" | String |
+| Column | Description | Data Type |
+|---------|-------------|------------|
+| `title` | The full title of the post. | String |
+| `score` | The net score (upvotes - downvotes). | Integer |
+| `upvote_ratio` | Ratio of upvotes to total votes (proxy for quality / approval). | Float |
+| `num_comments` | Total number of comments. | Integer |
+| `author` | Username of the post’s author. If deleted, may be `None`. | String |
+| `subreddit` | Subreddit where the post came from. | String |
+| `url` | External link URL (if it’s a link post). | String |
+| `permalink` | Permanent Reddit link to the post itself. | String |
+| `created_utc` | Unix timestamp of when the post was created (UTC). | Integer / String |
+| `is_self` | `True` if text-only/self post, `False` if it links out. | Boolean |
+| `selftext` | The body text of the post (truncated to 500 characters so rows don’t explode). | String |
+| `flair` | Flair / tag / category label on the post. | String |
+| `domain` | Domain of the linked content. | String |
+| `search_query` | The keyword used to find this post during search. | String |
 
 If any columns are missing data (for example, deleted authors or empty selftexts), the notebook fills them with `None` or `NaN.` 
 
