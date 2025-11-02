@@ -1,7 +1,5 @@
 
 
-pip install -r requirements.txt
-
 from typing import List, Dict, Any
 import os
 import pandas as pd
