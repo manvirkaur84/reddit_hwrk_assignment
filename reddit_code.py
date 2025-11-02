@@ -111,8 +111,8 @@ if __name__ == "__main__":
     # Task 1: hot posts
     hot_posts = fetch_hot_posts(SUBS, limit=50)
 
-    # Task 2: keyword search posts (example keyword: "homework")
-    search_posts_rows = search_posts(query="homework", subs=SUBS, limit=25)
+    # Task 2: keyword search posts
+    search_posts_rows = search_posts(query="behaviors", subs=SUBS, limit=25)
 
     # combine both sources of data
     all_posts = hot_posts + search_posts_rows
