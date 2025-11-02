@@ -106,7 +106,7 @@ def export_posts_to_csv(rows, out_path="reddit_data.csv"):
     print(f"📁 Saved {len(df)} rows to {out_path}")
 
 if __name__ == "__main__":
-    SUBS = ["education", "teachers", "college"]
+    SUBS = ["education", "teachers", "autism"]
 
     # Task 1: hot posts
     hot_posts = fetch_hot_posts(SUBS, limit=50)
