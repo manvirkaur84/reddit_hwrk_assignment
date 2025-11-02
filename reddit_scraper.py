@@ -4,7 +4,8 @@ from typing import List, Dict, Any
 import os
 import pandas as pd
 import praw
-from dotenv import load_dotenv
+from dotenv import dotenv_values
+
 
 # Define the path to your .env file in Google Drive
 # IMPORTANT: Update this path to the actual location of your reddit_api.env file in your Google Drive
