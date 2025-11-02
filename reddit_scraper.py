@@ -1,6 +1,6 @@
 
 
-!pip install -r requirements.txt
+pip install -r requirements.txt
 
 from typing import List, Dict, Any
 import os
