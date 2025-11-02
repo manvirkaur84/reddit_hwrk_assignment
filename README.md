@@ -44,9 +44,9 @@ Store your Reddit credentials in:
 /content/drive/MyDrive/assignment_folder/reddit_api.env
 
 Example:
-REDDIT_CLIENT_ID=your_client_id
-REDDIT_CLIENT_SECRET=your_client_secret
-REDDIT_USER_AGENT=your_user_agent
+* REDDIT_CLIENT_ID=your_client_id
+* REDDIT_CLIENT_SECRET=your_client_secret
+* REDDIT_USER_AGENT=your_user_agent
 
 ## 3. Script
 The main file is reddit_code.py.
