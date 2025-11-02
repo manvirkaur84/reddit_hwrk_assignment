@@ -33,11 +33,11 @@ import drive drive.mount('/content/drive')
 ```
 
 ## 2. Create requirements.txt
-praw
-pandas
-requests
-python-dotenv
-(Colab already has google.colab, so you don’t need to install it.)
+* praw
+* pandas
+*requests
+* python-dotenv
+* (Colab already has google.colab, so you don’t need to install it.)
 
 ## 3. Create reddit_api.env
 Store your Reddit credentials in:
