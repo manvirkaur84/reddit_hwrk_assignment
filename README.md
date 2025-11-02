@@ -28,7 +28,7 @@ import drive drive.mount('/content/drive')
 %cd /content/drive/MyDrive/assignment_folder 
  
 !git config --global user.name "Manvir Kaur" 
-!git config --global user.email "manvir99@icloud.com" ```
+!git config --global user.email "manvir99@icloud.com" 
 
 ```
 
